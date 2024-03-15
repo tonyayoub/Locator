@@ -13,6 +13,9 @@
 		F88708ED2BA3FFF200C7D477 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88708EC2BA3FFF200C7D477 /* Preview Assets.xcassets */; };
 		F88708EF2BA3FFF200C7D477 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88708EE2BA3FFF200C7D477 /* Persistence.swift */; };
 		F88708F22BA3FFF200C7D477 /* Locator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F88708F02BA3FFF200C7D477 /* Locator.xcdatamodeld */; };
+		F88709032BA4019800C7D477 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88709022BA4019800C7D477 /* LocationManager.swift */; };
+		F88709052BA4023900C7D477 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88709042BA4023900C7D477 /* DataManager.swift */; };
+		F88709072BA4044900C7D477 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88709062BA4044900C7D477 /* LocationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,12 @@
 		F88708EC2BA3FFF200C7D477 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F88708EE2BA3FFF200C7D477 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F88708F12BA3FFF200C7D477 /* Locator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Locator.xcdatamodel; sourceTree = "<group>"; };
+		F88708FD2BA4013C00C7D477 /* Update+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Update+CoreDataClass.swift"; path = "Locator/Model/Update+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F88708FE2BA4013C00C7D477 /* Update+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Update+CoreDataProperties.swift"; path = "Locator/Model/Update+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F88709022BA4019800C7D477 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		F88709042BA4023900C7D477 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		F88709062BA4044900C7D477 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		F88709082BA40A0E00C7D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +48,8 @@
 		F88708D92BA3FFF100C7D477 = {
 			isa = PBXGroup;
 			children = (
+				F88708FD2BA4013C00C7D477 /* Update+CoreDataClass.swift */,
+				F88708FE2BA4013C00C7D477 /* Update+CoreDataProperties.swift */,
 				F88708E42BA3FFF100C7D477 /* Locator */,
 				F88708E32BA3FFF100C7D477 /* Products */,
 			);
@@ -55,11 +66,13 @@
 		F88708E42BA3FFF100C7D477 /* Locator */ = {
 			isa = PBXGroup;
 			children = (
+				F88709082BA40A0E00C7D477 /* Info.plist */,
+				F88709012BA4018900C7D477 /* Location */,
+				F88708F82BA3FFFB00C7D477 /* Model */,
 				F88708E52BA3FFF100C7D477 /* LocatorApp.swift */,
 				F88708E72BA3FFF100C7D477 /* ContentView.swift */,
 				F88708E92BA3FFF200C7D477 /* Assets.xcassets */,
 				F88708EE2BA3FFF200C7D477 /* Persistence.swift */,
-				F88708F02BA3FFF200C7D477 /* Locator.xcdatamodeld */,
 				F88708EB2BA3FFF200C7D477 /* Preview Content */,
 			);
 			path = Locator;
@@ -71,6 +84,24 @@
 				F88708EC2BA3FFF200C7D477 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F88708F82BA3FFFB00C7D477 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F88708F02BA3FFF200C7D477 /* Locator.xcdatamodeld */,
+				F88709042BA4023900C7D477 /* DataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F88709012BA4018900C7D477 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				F88709022BA4019800C7D477 /* LocationManager.swift */,
+				F88709062BA4044900C7D477 /* LocationViewModel.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +175,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88708F22BA3FFF200C7D477 /* Locator.xcdatamodeld in Sources */,
+				F88709052BA4023900C7D477 /* DataManager.swift in Sources */,
 				F88708EF2BA3FFF200C7D477 /* Persistence.swift in Sources */,
+				F88709032BA4019800C7D477 /* LocationManager.swift in Sources */,
+				F88709072BA4044900C7D477 /* LocationViewModel.swift in Sources */,
 				F88708E82BA3FFF100C7D477 /* ContentView.swift in Sources */,
 				F88708E62BA3FFF100C7D477 /* LocatorApp.swift in Sources */,
 			);
@@ -283,6 +317,9 @@
 				DEVELOPMENT_TEAM = 9HKUVL2QGT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Locator/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please grant permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Plkease grant permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -312,6 +349,9 @@
 				DEVELOPMENT_TEAM = 9HKUVL2QGT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Locator/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please grant permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Plkease grant permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

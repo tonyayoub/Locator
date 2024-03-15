@@ -10,77 +10,50 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @EnvironmentObject var viewModel: LocationViewModel
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+        sortDescriptors: [NSSortDescriptor(keyPath: \Update.time, ascending: true)],
+        animation: .none)
+    private var updates: FetchedResults<Update>
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                ForEach(updates) { update in
+                    VStack(alignment: .leading) {
+                        Text("\(update.time ?? Date(), formatter: itemFormatter)")
+                            .font(.caption)
+                        Text("Latitude: \(update.latitude)")
+                            .font(.caption)
+                        Text("Longitude: \(update.longitude)")
+                            .font(.caption)
+                        Text("\(update.comment ?? "")")
+                            .font(.caption)
+                            .foregroundStyle(update.comment == "Foreground" ? Color.green : Color.red)
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
+            .navigationTitle("Updates")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                Button(action: clearUpdates) {
+                    Label("Clear", systemImage: "trash")
                 }
             }
-            Text("Select an item")
+        }
+        .task {
+            viewModel.requestPermissionAndStartUpdates()
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+    
+    private func clearUpdates() {
+        viewModel.deleteAll()
     }
 }
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
+    formatter.dateStyle = .none
     formatter.timeStyle = .medium
     return formatter
 }()
 
-#Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
